@@ -6,6 +6,7 @@
 <meta name="apple-mobile-web-app-title" content="Vaquero Finance">
 <meta name="theme-color" content="#10243e">
 <title>Vaquero Finance</title>
+<link rel="manifest" href="https://sherifsawalhy-spec.github.io/vaquero-finance/manifest.json">
 <link rel="apple-touch-icon" href="https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png">
 <link rel="icon" href="https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png">
 <style>
@@ -21,17 +22,15 @@ p{margin:0;opacity:.85;max-width:330px;line-height:1.5}
 <img src="https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png" alt="">
 <h1>Vaquero Finance</h1>
 <a class="btn" id="go" href="https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec">Open</a>
-<p id="tip">To add it to your iPhone: tap Share, then Add to Home Screen. Turn OFF "Open as Web App", then tap Add.</p>
+<p id="tip">Opening…</p>
 <script>
-// The home-screen icon saves this page's address with ?go=1, so opening
-// the icon goes straight to the launcher in Safari (keeping the Google sign-in).
-// Visiting the plain address shows this page so Add to Home Screen picks up the icon.
+// Always go straight to the launcher, except on the setup address (?setup=1),
+// which stays here so Add to Home Screen can pick up the icon.
 var go = document.getElementById('go').href;
-if (/[?&]go=1/.test(location.search)) {
-  document.getElementById('tip').textContent = 'Opening…';
-  location.replace(go);
+if (/[?&]setup=1/.test(location.search)) {
+  document.getElementById('tip').textContent = 'To add it to your iPhone: tap Share, then Add to Home Screen, then Add.';
 } else {
-  history.replaceState(null, '', location.pathname + '?go=1');
+  location.replace(go);
 }
 </script>
 </body>
