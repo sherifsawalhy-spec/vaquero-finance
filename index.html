@@ -3,34 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Vaquero Finance">
 <meta name="theme-color" content="#10243e">
 <title>Vaquero Finance</title>
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" href="https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png">
+<link rel="icon" href="https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png">
 <style>
 html,body{margin:0;height:100%;background:#10243e;color:#fff;font:16px -apple-system,BlinkMacSystemFont,Arial,sans-serif}
 body{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:24px;box-sizing:border-box;text-align:center}
 img{width:96px;height:96px;border-radius:22px}
 h1{margin:0;font-size:22px}
 a.btn{display:inline-block;background:#c9a227;color:#10243e;font-weight:700;padding:14px 28px;border-radius:12px;text-decoration:none}
-p{margin:0;opacity:.8;max-width:320px;line-height:1.5}
+p{margin:0;opacity:.85;max-width:330px;line-height:1.5}
 </style>
 </head>
 <body>
-<img src="apple-touch-icon.png" alt="">
+<img src="https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png" alt="">
 <h1>Vaquero Finance</h1>
 <a class="btn" id="go" href="https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec">Open</a>
-<p id="tip">To add it to your iPhone: tap Share, then Add to Home Screen.</p>
+<p id="tip">To add it to your iPhone: tap Share, then Add to Home Screen. Turn OFF "Open as Web App", then tap Add.</p>
 <script>
-// Opened from the home screen icon: go straight to the launcher.
-// In normal Safari, stay here so Add to Home Screen picks up this page's icon.
-if (window.navigator.standalone || matchMedia('(display-mode: standalone)').matches) {
+// The home-screen icon saves this page's address with ?go=1, so opening
+// the icon goes straight to the launcher in Safari (keeping the Google sign-in).
+// Visiting the plain address shows this page so Add to Home Screen picks up the icon.
+var go = document.getElementById('go').href;
+if (/[?&]go=1/.test(location.search)) {
   document.getElementById('tip').textContent = 'Opening…';
-  location.replace(document.getElementById('go').href);
+  location.replace(go);
+} else {
+  history.replaceState(null, '', location.pathname + '?go=1');
 }
 </script>
 </body>
