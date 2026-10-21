@@ -24,10 +24,11 @@ p{margin:0;opacity:.85;max-width:330px;line-height:1.5}
 <a class="btn" id="go" href="https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec">Open</a>
 <p id="tip">Opening…</p>
 <script>
-// Always go straight to the launcher, except on the setup address (?setup=1),
-// which stays here so Add to Home Screen can pick up the icon.
+// Goes straight to the launcher, except on the setup address (?setup=1)
+// opened in Safari, which stays here so Add to Home Screen picks up the icon.
 var go = document.getElementById('go').href;
-if (/[?&]setup=1/.test(location.search)) {
+var homeScreen = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
+if (/[?&]setup=1/.test(location.search) && !homeScreen) {
   document.getElementById('tip').textContent = 'To add it to your iPhone: tap Share, then Add to Home Screen, then Add.';
 } else {
   location.replace(go);
