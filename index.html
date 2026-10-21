@@ -15,7 +15,7 @@ body{display:flex;align-items:center;justify-content:center;flex-direction:colum
 /* The Vaquero Hospitality wordmark (white artwork), shown above the title. */
 #logo{order:-1;width:240px;max-width:75vw;height:auto;margin-bottom:8px}
 h1{margin:0;font-size:22px}
-a.btn{display:inline-block;background:#c9a227;color:#10243e;font-weight:700;padding:14px 28px;border-radius:12px;text-decoration:none}
+a.btn{display:inline-block;visibility:hidden;background:#c9a227;color:#10243e;font-weight:700;padding:14px 28px;border-radius:12px;text-decoration:none}
 p{margin:0;opacity:.85;max-width:330px;line-height:1.5}
 </style>
 </head>
@@ -23,6 +23,7 @@ p{margin:0;opacity:.85;max-width:330px;line-height:1.5}
 <h1>Vaquero Finance</h1>
 <a class="btn" id="go" target="_blank" rel="noopener" href="https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec">Open</a>
 <p id="tip">Opening…</p>
+<style>a.btn.show{visibility:visible}</style>
 <script>
 // The apps need your Google sign-in, which only Safari itself has.
 // - Home-screen icon (web app mode): hand the address to Safari (x-safari-https,
@@ -32,11 +33,16 @@ p{margin:0;opacity:.85;max-width:330px;line-height:1.5}
 var go = document.getElementById('go').href;
 var tip = document.getElementById('tip');
 var homeScreen = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
+// The Open button is only a fallback: it appears after a few seconds, and
+// only if the automatic hand-off to Safari has not happened.
+function showOpen() { document.getElementById('go').className = 'btn show'; }
+setTimeout(showOpen, 3000);
 if (homeScreen) {
-  tip.textContent = 'Opening in Safari… If nothing happens, tap Open.';
+  tip.textContent = 'Opening in Safari…';
   location.href = 'x-safari-' + go;
 } else if (/[?&]setup=1/.test(location.search)) {
   tip.textContent = 'To add it to your iPhone: tap Share, then Add to Home Screen, then Add.';
+  showOpen();
 } else {
   location.replace(go);
 }
