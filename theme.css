@@ -1,0 +1,24 @@
+/* Vaquero apps — shared theme ("Warm Hospitality", Oct 2026).
+   Every Vaquero web app loads this file after its own styles, so a colour
+   changed here changes in all the apps (within ~10 minutes of committing).
+   Each app also keeps a built-in copy, so if this file can't load the apps
+   still look right. Different apps use different names for the same
+   colour, which is why several names share one value. */
+:root{
+  /* Navy — headers, primary buttons, table headings */
+  --navy:#1b2a41; --head:#1b2a41; --accent:#1b2a41;
+  --navy2:#24364f; --navy-light:#24364f;
+  /* Terracotta — highlights, active tab, attention */
+  --gold:#c0643b; --terra:#c0643b; --brass:#c0643b;
+  /* Backgrounds and cards */
+  --bg:#f7f2ea; --cream:#f7f2ea;
+  --card:#fffdf9; --surface:#fffdf9;
+  --sec:#f3ece1; --sunk:#f3ece1; --grey:#f3ece1;
+  /* Lines and text */
+  --line:#e8dfd0; --border:#e8dfd0; --grid:#e8dfd0;
+  --ink:#2a2622; --text:#2a2622; --fg:#2a2622;
+  --ink2:#5a5048; --muted:#7a6f63; --mut:#7a6f63;
+  /* Accents */
+  --olive:#6b7a3a;
+}
+body{background:#f7f2ea}
