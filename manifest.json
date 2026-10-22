@@ -4,8 +4,8 @@
   "start_url": "https://sherifsawalhy-spec.github.io/vaquero-finance/?go=1",
   "scope": "https://sherifsawalhy-spec.github.io/vaquero-finance/",
   "display": "standalone",
-  "background_color": "#f7f2ea",
-  "theme_color": "#f7f2ea",
+  "background_color": "#1b2a41",
+  "theme_color": "#1b2a41",
   "icons": [
     {
       "src": "https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png",
