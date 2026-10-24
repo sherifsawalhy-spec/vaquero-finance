@@ -51,6 +51,13 @@ header{position:relative}
 .today{margin-top:3px;font-size:13px;color:rgba(255,255,255,.72)}
 [dir=rtl] body{font-family:"Segoe UI",Tahoma,Arial,sans-serif}
 [dir=rtl] .sub{letter-spacing:0}
+/* Compact header (24/10/2026): greeting and date on one small line, smaller logo, clear of the iPhone camera */
+header{padding:calc(max(env(safe-area-inset-top), 50px) + 22px) 20px 14px}
+#logo{width:180px;max-width:52vw}
+.sub{font-size:11px;margin-top:8px}
+.hello{margin-top:6px;font-size:12px;font-weight:500;color:rgba(255,255,255,.7)}
+.today{display:none}
+.lang{padding:4px 12px;font-size:12px}
 </style>
 </head>
 <body>
@@ -114,9 +121,10 @@ function applyLang(lang) {
   document.getElementById('langBtn').textContent = ar ? 'English' : 'عربي';
   var now = new Date();
   var h = Number(new Intl.DateTimeFormat('en-GB', { hour: 'numeric', hourCycle: 'h23', timeZone: 'Africa/Cairo' }).format(now));
-  document.getElementById('hello').textContent = ar ? (h >= 5 && h < 12 ? 'صباح الخير' : 'مساء الخير')
+  var greet = ar ? (h >= 5 && h < 12 ? 'صباح الخير' : 'مساء الخير')
     : (h >= 5 && h < 12 ? 'Good morning' : h >= 12 && h < 17 ? 'Good afternoon' : 'Good evening');
-  document.getElementById('today').textContent = now.toLocaleDateString(ar ? 'ar-EG' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Africa/Cairo' });
+  var day = now.toLocaleDateString(ar ? 'ar-EG' : 'en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Africa/Cairo' });
+  document.getElementById('hello').textContent = greet + ' · ' + day;
 }
 applyLang(getLang());
 document.getElementById('langBtn').addEventListener('click', function () {
