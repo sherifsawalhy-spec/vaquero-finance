@@ -58,3 +58,9 @@ html[data-theme=dark] :is(img[alt="Chicha" i],img[alt="Luma" i],img[alt="Riah" i
   html:not([data-theme=light]) thead:has(img.thl) th{background:#e6e0d6 !important;color:#2a2622 !important}
 }
 html[data-theme=dark] thead:has(img.thl) th{background:#e6e0d6 !important;color:#2a2622 !important}
+/* Olive & Grain logo has a white background, so it goes black-and-white instead
+   (shown as white artwork on dark after the page inversion). */
+@media (prefers-color-scheme: dark){
+  html:not([data-theme=light]) :is(img[alt="Olive & Grain" i],img[src*="kpCUXRZmpupVxjKtXosWPWrFtnbWPDjhgLlqBZsO"]){filter:grayscale(1) contrast(4) !important}
+}
+html[data-theme=dark] :is(img[alt="Olive & Grain" i],img[src*="kpCUXRZmpupVxjKtXosWPWrFtnbWPDjhgLlqBZsO"]){filter:grayscale(1) contrast(4) !important}
