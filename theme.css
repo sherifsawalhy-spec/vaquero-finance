@@ -32,15 +32,15 @@ body{background:#f7f2ea}
    phone setting. */
 @media (prefers-color-scheme: dark){
   html:not([data-theme=light]){filter:invert(.9) hue-rotate(180deg);background:#f7f2ea}
-  html:not([data-theme=light]) :is(#mHead,.sidebar,header,.topbar,.bottom-nav){background:#e6e0d6 !important;box-shadow:none !important;border-color:#d8d0c3 !important}
+  html:not([data-theme=light]) :is(#mHead,.sidebar,header,.topbar,.bottom-nav){color:#2a2622 !important;background:#e6e0d6 !important;box-shadow:none !important;border-color:#d8d0c3 !important}
   html:not([data-theme=light]) :is(.brand,.mobile-brand,header,.topbar) img{filter:invert(1) hue-rotate(180deg)}
-  html:not([data-theme=light]) :is(#mHead,header,.topbar) :is(button,a.btn){color:#2a2622 !important;border-color:rgba(42,38,34,.35) !important}
+  html:not([data-theme=light]) :is(#mHead,header,.topbar) :is(button,select,a,span,div,h1,h2,h3,small,b,strong,label){color:#2a2622 !important;border-color:rgba(42,38,34,.35) !important}
   html:not([data-theme=light]) :is(.sidebar,.bottom-nav) :is(.nav button,.bn-item){color:rgba(42,38,34,.7) !important}
   html:not([data-theme=light]) :is(.sidebar .nav button.active,.bn-item.active){background:rgba(42,38,34,.14) !important;color:#2a2622 !important}
 }
 html[data-theme=dark]{filter:invert(.9) hue-rotate(180deg);background:#f7f2ea}
-html[data-theme=dark] :is(#mHead,.sidebar,header,.topbar,.bottom-nav){background:#e6e0d6 !important;box-shadow:none !important;border-color:#d8d0c3 !important}
+html[data-theme=dark] :is(#mHead,.sidebar,header,.topbar,.bottom-nav){color:#2a2622 !important;background:#e6e0d6 !important;box-shadow:none !important;border-color:#d8d0c3 !important}
 html[data-theme=dark] :is(.brand,.mobile-brand,header,.topbar) img{filter:invert(1) hue-rotate(180deg)}
-html[data-theme=dark] :is(#mHead,header,.topbar) :is(button,a.btn){color:#2a2622 !important;border-color:rgba(42,38,34,.35) !important}
+html[data-theme=dark] :is(#mHead,header,.topbar) :is(button,select,a,span,div,h1,h2,h3,small,b,strong,label){color:#2a2622 !important;border-color:rgba(42,38,34,.35) !important}
 html[data-theme=dark] :is(.sidebar,.bottom-nav) :is(.nav button,.bn-item){color:rgba(42,38,34,.7) !important}
 html[data-theme=dark] :is(.sidebar .nav button.active,.bn-item.active){background:rgba(42,38,34,.14) !important;color:#2a2622 !important}
