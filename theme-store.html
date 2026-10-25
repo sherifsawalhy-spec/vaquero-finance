@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>vq theme store</title>
+<script>
+/* Shared light/dark choice for all Vaquero apps (25/10/2026).
+   Every app loads this page in a hidden frame; because the frame always comes
+   from this site, all apps read and write the same saved choice. */
+var KEY = 'vqTheme';
+function get() { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } }
+window.addEventListener('message', function (e) {
+  var d = e.data || {};
+  if (d.vq !== 'theme') return;
+  if (typeof d.set === 'string') { try { if (d.set) localStorage.setItem(KEY, d.set); else localStorage.removeItem(KEY); } catch (x) {} }
+  e.source.postMessage({ vq: 'theme', value: get() }, '*');
+});
+/* Another app changed it: tell the app this frame sits in, so it switches too. */
+window.addEventListener('storage', function (e) { if (e.key === KEY) parent.postMessage({ vq: 'theme', value: get() }, '*'); });
+</script>
