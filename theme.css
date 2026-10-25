@@ -44,3 +44,12 @@ html[data-theme=dark] :is(.brand,.mobile-brand,header,.topbar) img{filter:invert
 html[data-theme=dark] :is(#mHead,header,.topbar) *{color:#2a2622 !important;border-color:rgba(42,38,34,.35) !important}
 html[data-theme=dark] :is(.sidebar,.bottom-nav) :is(.nav button,.bn-item){color:rgba(42,38,34,.7) !important}
 html[data-theme=dark] :is(.sidebar .nav button.active,.bn-item.active){background:rgba(42,38,34,.14) !important;color:#2a2622 !important}
+
+/* ---- Outlet logos all white in dark mode (Sherif, 25/10/2026) ----------------
+   Chicha, Luma, Riah, Barten and Char logos turn into a plain silhouette, which the
+   page inversion above shows as white. Matched by alt text, or by the logo image
+   itself where an app shows it without alt text (Cash Flow). */
+@media (prefers-color-scheme: dark){
+  html:not([data-theme=light]) :is(img[alt="Chicha" i],img[alt="Luma" i],img[alt="Riah" i],img[alt="Barten" i],img[alt="Char" i],img[src*="eqja9MnTqbEKIsyGogRqORBwD49ttvOwcHByMAYK"],img[src*="fm5uZSJI25B1B7lNafUqKmnIcJDKL294CI4HK5MC"],img[src*="RdtSPXvt2ZtBDG/xNP90NECwtBV+3I75sFCeLMdf"],img[src*="ukl+joaN5kMrFC9uxZmCcCAC/vL19gn/P3uihBAg"],img[src*="stCgoKZPh59fl8qh9Qe4C8Xq8AIHw+HwMwuvhx0u"]){filter:brightness(0) !important}
+}
+html[data-theme=dark] :is(img[alt="Chicha" i],img[alt="Luma" i],img[alt="Riah" i],img[alt="Barten" i],img[alt="Char" i],img[src*="eqja9MnTqbEKIsyGogRqORBwD49ttvOwcHByMAYK"],img[src*="fm5uZSJI25B1B7lNafUqKmnIcJDKL294CI4HK5MC"],img[src*="RdtSPXvt2ZtBDG/xNP90NECwtBV+3I75sFCeLMdf"],img[src*="ukl+joaN5kMrFC9uxZmCcCAC/vL19gn/P3uihBAg"],img[src*="stCgoKZPh59fl8qh9Qe4C8Xq8AIHw+HwMwuvhx0u"]){filter:brightness(0) !important}
