@@ -6,7 +6,7 @@
    on the device uses it, however it is opened. */
 (function () {
   var KEY = 'vqTheme', root = document.documentElement;
-  var STORE = 'https://sherifsawalhy-spec.github.io', STORE_URL = STORE + '/vaquero-finance/theme-store.html';
+  var STORE = 'https://vaquerohospitality.github.io', STORE_URL = STORE + '/theme-store.html';
   var cur = '';
   try { cur = localStorage.getItem(KEY) || ''; } catch (e) {}
   function apply(t) { cur = t || ''; if (cur) root.setAttribute('data-theme', cur); else root.removeAttribute('data-theme'); try { if (cur) localStorage.setItem(KEY, cur); else localStorage.removeItem(KEY); } catch (e) {} }
