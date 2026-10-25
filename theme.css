@@ -53,3 +53,8 @@ html[data-theme=dark] :is(.sidebar .nav button.active,.bn-item.active){backgroun
   html:not([data-theme=light]) :is(img[alt="Chicha" i],img[alt="Luma" i],img[alt="Riah" i],img[alt="Barten" i],img[alt="Char" i],img[src*="eqja9MnTqbEKIsyGogRqORBwD49ttvOwcHByMAYK"],img[src*="fm5uZSJI25B1B7lNafUqKmnIcJDKL294CI4HK5MC"],img[src*="RdtSPXvt2ZtBDG/xNP90NECwtBV+3I75sFCeLMdf"],img[src*="ukl+joaN5kMrFC9uxZmCcCAC/vL19gn/P3uihBAg"],img[src*="stCgoKZPh59fl8qh9Qe4C8Xq8AIHw+HwMwuvhx0u"]){filter:brightness(0) !important}
 }
 html[data-theme=dark] :is(img[alt="Chicha" i],img[alt="Luma" i],img[alt="Riah" i],img[alt="Barten" i],img[alt="Char" i],img[src*="eqja9MnTqbEKIsyGogRqORBwD49ttvOwcHByMAYK"],img[src*="fm5uZSJI25B1B7lNafUqKmnIcJDKL294CI4HK5MC"],img[src*="RdtSPXvt2ZtBDG/xNP90NECwtBV+3I75sFCeLMdf"],img[src*="ukl+joaN5kMrFC9uxZmCcCAC/vL19gn/P3uihBAg"],img[src*="stCgoKZPh59fl8qh9Qe4C8Xq8AIHw+HwMwuvhx0u"]){filter:brightness(0) !important}
+/* P&L: the outlet header band behind those logos goes dark too, so the white logos show. */
+@media (prefers-color-scheme: dark){
+  html:not([data-theme=light]) thead:has(img.thl) th{background:#e6e0d6 !important;color:#2a2622 !important}
+}
+html[data-theme=dark] thead:has(img.thl) th{background:#e6e0d6 !important;color:#2a2622 !important}
