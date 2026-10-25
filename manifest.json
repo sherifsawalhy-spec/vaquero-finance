@@ -1,14 +1,14 @@
 {
   "name": "Vaquero Finance",
   "short_name": "Vaquero Finance",
-  "start_url": "https://sherifsawalhy-spec.github.io/vaquero-finance/?go=1",
-  "scope": "https://sherifsawalhy-spec.github.io/vaquero-finance/",
+  "start_url": "https://vaquerohospitality.github.io/?go=1",
+  "scope": "https://vaquerohospitality.github.io/",
   "display": "standalone",
   "background_color": "#1b2a41",
   "theme_color": "#1b2a41",
   "icons": [
     {
-      "src": "https://sherifsawalhy-spec.github.io/vaquero-finance/apple-touch-icon.png",
+      "src": "https://vaquerohospitality.github.io/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
