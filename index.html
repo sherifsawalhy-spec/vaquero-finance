@@ -190,9 +190,12 @@ window.addEventListener('pageshow', function () { setTimeout(function () { splas
     label();
   }
   document.getElementById('langBtn').addEventListener('click', label);
+  // Coming back from the CEO dashboard (only the three of them can open it): remember on this device, so the tile also
+  // shows on iPhones, where Safari blocks the background check below.
+  if (/[?&]ceo=ok\b/.test(location.search)) { remember(true); try { history.replaceState(null, '', location.pathname); } catch (e) {} }
   if (remembered()) show();
   function hide() { var a = document.getElementById('ceoCard'); if (a) a.parentNode.removeChild(a); }
-  window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } else { remember(false); hide(); } };
+  window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } else if (ok === false) { remember(false); hide(); } };
   var s = document.createElement('script'); s.async = true; s.src = FIN + '?ceoCheck=1&cb=vqCeoCheck';
   document.body.appendChild(s);
 })();
