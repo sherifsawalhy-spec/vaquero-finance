@@ -162,16 +162,14 @@ window.addEventListener('pageshow', function () { setTimeout(function () { splas
 </script>
 <script>
 /* CEO dashboard card (28/10/2026): only for Sherif, Omar and Fareed. The Finance app tells this page whether the
-   signed-in Google account is one of them, and the answer is remembered on this device. ?ceo=1 shows the card on
-   this device, ?ceo=0 hides it. The dashboard itself checks access again, so nobody else can open it. */
+   signed-in Google account is one of them. The card shows only when the answer is yes; a no (or a different account
+   signed in) removes it again. The dashboard itself checks access again, so nobody else can open it. */
 (function () {
   var FIN = 'https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec';
   var TXT = { en: ['CEO Dashboard', 'Sales, profit, cash, costs and catering for all outlets at a glance.', 'Open'],
               ar: ['لوحة الرئيس التنفيذي', 'المبيعات والأرباح والنقدية والتكاليف والكيترينج لكل الفروع في صفحة واحدة.', 'فتح'] };
   function remembered() { try { return localStorage.getItem('vqCeo') === '1'; } catch (e) { return false; } }
   function remember(on) { try { localStorage.setItem('vqCeo', on ? '1' : '0'); } catch (e) {} }
-  var q = location.search.match(/[?&]ceo=([01])/);
-  if (q) remember(q[1] === '1');
   function label() {
     var a = document.getElementById('ceoCard'); if (!a) return;
     var t = TXT[getLang() === 'ar' ? 'ar' : 'en'];
@@ -193,7 +191,8 @@ window.addEventListener('pageshow', function () { setTimeout(function () { splas
   }
   document.getElementById('langBtn').addEventListener('click', label);
   if (remembered()) show();
-  window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } };
+  function hide() { var a = document.getElementById('ceoCard'); if (a) a.parentNode.removeChild(a); }
+  window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } else { remember(false); hide(); } };
   var s = document.createElement('script'); s.async = true; s.src = FIN + '?ceoCheck=1&cb=vqCeoCheck';
   document.body.appendChild(s);
 })();
