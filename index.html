@@ -198,6 +198,20 @@ window.addEventListener('pageshow', function () { setTimeout(function () { splas
   window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } else if (ok === false) { remember(false); hide(); } };
   var s = document.createElement('script'); s.async = true; s.src = FIN + '?ceoCheck=1&cb=vqCeoCheck';
   document.body.appendChild(s);
+  // iPhone Home Screen app (29/10/2026): it keeps its own storage, separate from Safari, and the background check above
+  // can't run there. Press and hold the Vaquero logo for a second to open the CEO dashboard (anyone else gets "No access");
+  // tapping the logo inside the dashboard brings you back here and the CEO card then stays on this phone.
+  var logo = document.getElementById('logo'), hold = null;
+  if (logo) {
+    logo.style.webkitTouchCallout = 'none'; logo.style.webkitUserSelect = 'none'; logo.setAttribute('draggable', 'false');
+    var start = function () { clearTimeout(hold); hold = setTimeout(function () {
+      document.getElementById('splashSub').textContent = TXT[getLang() === 'ar' ? 'ar' : 'en'][0].toUpperCase();
+      splash.classList.remove('hide'); location.href = FIN + '?page=ceo&theme=' + (vqTheme() || 'auto'); }, 900); };
+    var stop = function () { clearTimeout(hold); };
+    logo.addEventListener('touchstart', start, { passive: true }); logo.addEventListener('mousedown', start);
+    ['touchend', 'touchmove', 'touchcancel', 'mouseup', 'mouseleave'].forEach(function (ev) { logo.addEventListener(ev, stop); });
+    logo.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  }
 })();
 </script>
 </body>
