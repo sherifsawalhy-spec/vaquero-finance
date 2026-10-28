@@ -160,5 +160,43 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catc
 window.addEventListener('pageshow', function () { applyLang(getLang()); });
 window.addEventListener('pageshow', function () { setTimeout(function () { splash.classList.add('hide'); }, 300); });
 </script>
+<script>
+/* CEO dashboard card (28/10/2026): only for Sherif, Omar and Fareed. The Finance app tells this page whether the
+   signed-in Google account is one of them, and the answer is remembered on this device. ?ceo=1 shows the card on
+   this device, ?ceo=0 hides it. The dashboard itself checks access again, so nobody else can open it. */
+(function () {
+  var FIN = 'https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec';
+  var TXT = { en: ['CEO dashboard', 'Sales, profit, cash, costs and catering for all outlets at a glance.', 'Open'],
+              ar: ['لوحة الرئيس التنفيذي', 'المبيعات والأرباح والنقدية والتكاليف والكيترينج لكل الفروع في صفحة واحدة.', 'فتح'] };
+  function remembered() { try { return localStorage.getItem('vqCeo') === '1'; } catch (e) { return false; } }
+  function remember(on) { try { localStorage.setItem('vqCeo', on ? '1' : '0'); } catch (e) {} }
+  var q = location.search.match(/[?&]ceo=([01])/);
+  if (q) remember(q[1] === '1');
+  function label() {
+    var a = document.getElementById('ceoCard'); if (!a) return;
+    var t = TXT[getLang() === 'ar' ? 'ar' : 'en'];
+    a.querySelector('.name').textContent = t[0]; a.querySelector('.what').textContent = t[1]; a.querySelector('.go').textContent = t[2];
+  }
+  function show() {
+    if (document.getElementById('ceoCard')) return;
+    var a = document.createElement('a');
+    a.className = 'app'; a.id = 'ceoCard'; a.href = FIN + '?page=ceo';
+    a.innerHTML = '<div class="icon">📈</div><div class="name"></div><div class="what"></div><div class="go"></div>';
+    var apps = document.querySelector('.apps'); apps.insertBefore(a, apps.firstChild);
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('splashSub').textContent = a.querySelector('.name').textContent.toUpperCase();
+      splash.classList.remove('hide');
+      location.href = a.href + '&theme=' + (vqTheme() || 'auto');
+    });
+    label();
+  }
+  document.getElementById('langBtn').addEventListener('click', label);
+  if (remembered()) show();
+  window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } };
+  var s = document.createElement('script'); s.async = true; s.src = FIN + '?ceoCheck=1&cb=vqCeoCheck';
+  document.body.appendChild(s);
+})();
+</script>
 </body>
 </html>
