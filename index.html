@@ -193,11 +193,9 @@ window.addEventListener('pageshow', function () { setTimeout(function () { splas
   // Coming back from the CEO dashboard (only the three of them can open it): remember on this device, so the tile also
   // shows on iPhones, where Safari blocks the background check below.
   if (/[?&]ceo=ok\b/.test(location.search)) { remember(true); try { history.replaceState(null, '', location.pathname); } catch (e) {} }
-  if (remembered()) show();
+  // 29/10/2026 (Sherif): no CEO card on this page any more, on phone or computer. The CEO dashboard opens only by
+  // pressing and holding the Vaquero logo (below); the dashboard itself still lets in only Sherif, Omar and Fareed.
   function hide() { var a = document.getElementById('ceoCard'); if (a) a.parentNode.removeChild(a); }
-  window.vqCeoCheck = function (ok) { if (ok === true) { remember(true); show(); } else if (ok === false) { remember(false); hide(); } };
-  var s = document.createElement('script'); s.async = true; s.src = FIN + '?ceoCheck=1&cb=vqCeoCheck';
-  document.body.appendChild(s);
   // iPhone Home Screen app (29/10/2026): it keeps its own storage, separate from Safari, and the background check above
   // can't run there. Press and hold the Vaquero logo for a second to open the CEO dashboard (anyone else gets "No access");
   // tapping the logo inside the dashboard brings you back here and the CEO card then stays on this phone.
