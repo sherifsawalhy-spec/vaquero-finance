@@ -166,7 +166,7 @@ window.addEventListener('pageshow', function () { setTimeout(function () { splas
    this device, ?ceo=0 hides it. The dashboard itself checks access again, so nobody else can open it. */
 (function () {
   var FIN = 'https://script.google.com/a/macros/vaquerohospitality.com/s/AKfycbyNguFiwHdv_XV56bg1_Ams780Rfdwc7xq0ld-AcIx7HueNrtm5TVBsJmX_yuxg9fcNrA/exec';
-  var TXT = { en: ['CEO dashboard', 'Sales, profit, cash, costs and catering for all outlets at a glance.', 'Open'],
+  var TXT = { en: ['CEO Dashboard', 'Sales, profit, cash, costs and catering for all outlets at a glance.', 'Open'],
               ar: ['لوحة الرئيس التنفيذي', 'المبيعات والأرباح والنقدية والتكاليف والكيترينج لكل الفروع في صفحة واحدة.', 'فتح'] };
   function remembered() { try { return localStorage.getItem('vqCeo') === '1'; } catch (e) { return false; } }
   function remember(on) { try { localStorage.setItem('vqCeo', on ? '1' : '0'); } catch (e) {} }
