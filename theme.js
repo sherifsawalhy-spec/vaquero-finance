@@ -47,3 +47,13 @@
   /* Remove the per-app button from the earlier version if a cached page still has it. */
   var old = document.getElementById('vqThemeBtn'); if (old) old.remove();
 })();
+
+/* Vaquero Assistant (29/10/2026): adds the chat button to every Vaquero app that loads this file. */
+(function () {
+  try {
+    if (window.__vqAssistant || /^Vaquero Assistant$/i.test(document.title)) return;
+    var s = document.createElement('script');
+    s.src = 'https://vaquerohospitality.github.io/assistant.js'; s.async = true;
+    (document.head || document.documentElement).appendChild(s);
+  } catch (e) {}
+})();
