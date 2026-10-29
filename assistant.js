@@ -18,7 +18,7 @@
     'background:#c0643b;color:#fff;box-shadow:0 6px 18px rgba(27,42,65,.28);display:flex;align-items:center;justify-content:center;transition:transform .12s}' +
     '.vqa-btn:hover{transform:scale(1.06)}.vqa-btn svg{width:26px;height:26px}' +
     '.vqa-btn.has-bar{bottom:calc(78px + env(safe-area-inset-bottom))}' +
-    '.vqa-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);z-index:2147483001;background:#f7f2ea;box-shadow:-8px 0 30px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .2s ease;display:flex}' +
+    '.vqa-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);z-index:2147483001;background:#f7f2ea;box-shadow:-8px 0 30px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .2s ease;display:flex;overscroll-behavior:contain}' +
     '.vqa-panel.open{transform:none}.vqa-panel iframe{border:0;width:100%;height:100%}' +
     '.vqa-x{position:absolute;top:12px;left:-40px;width:34px;height:34px;border-radius:50%;border:0;background:#1b2a41;color:#fff;font-size:18px;line-height:34px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);display:none}' +
     '.vqa-panel.open .vqa-x{display:block}' +
@@ -54,9 +54,17 @@
       var loaded = false; f.onload = function () { loaded = true; };
       setTimeout(function () { if (!loaded) { closePanel(); window.open(link, '_blank'); } }, 12000);
     }
+    lockPage(true);
     requestAnimationFrame(function () { panel.classList.add('open'); });
   }
-  function closePanel() { if (panel) panel.classList.remove('open'); }
+  // while the chat is open the page behind it stays still, so scrolling only moves the chat
+  var saved = null;
+  function lockPage(on) {
+    var h = document.documentElement, bd = document.body;
+    if (on && saved === null) { saved = [h.style.overflow, bd.style.overflow]; h.style.overflow = 'hidden'; bd.style.overflow = 'hidden'; }
+    else if (!on && saved !== null) { h.style.overflow = saved[0]; bd.style.overflow = saved[1]; saved = null; }
+  }
+  function closePanel() { if (panel) panel.classList.remove('open'); lockPage(false); }
   b.onclick = function () { panel && panel.classList.contains('open') ? closePanel() : openPanel(); };
   window.addEventListener('message', function (e) {
     var d = (e && e.data) || {};
