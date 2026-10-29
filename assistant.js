@@ -15,10 +15,10 @@
   var link = URL + '?app=' + encodeURIComponent(app);
 
   var css = '.vqa-btn{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:2147483000;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;' +
-    'background:#c9a227;color:#10243e;box-shadow:0 6px 18px rgba(16,36,62,.28);display:flex;align-items:center;justify-content:center;transition:transform .12s}' +
+    'background:#c0643b;color:#fff;box-shadow:0 6px 18px rgba(27,42,65,.28);display:flex;align-items:center;justify-content:center;transition:transform .12s}' +
     '.vqa-btn:hover{transform:scale(1.06)}.vqa-btn svg{width:26px;height:26px}' +
     '.vqa-btn.has-bar{bottom:calc(78px + env(safe-area-inset-bottom))}' +
-    '.vqa-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);z-index:2147483001;background:#f4f5f7;box-shadow:-8px 0 30px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .2s ease;display:flex}' +
+    '.vqa-panel{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);z-index:2147483001;background:#f7f2ea;box-shadow:-8px 0 30px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .2s ease;display:flex}' +
     '.vqa-panel.open{transform:none}.vqa-panel iframe{border:0;width:100%;height:100%}' +
     '@media print{.vqa-btn,.vqa-panel{display:none}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
