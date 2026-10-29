@@ -33,12 +33,18 @@
     b.classList.toggle('has-bar', !!(bar && getComputedStyle(bar).position === 'fixed'));
   }
 
+  // pass this page's light/dark choice so the chat looks the same (it can't read it itself inside a frame)
+  function themeQ() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (!t) { try { t = localStorage.getItem('vqTheme'); } catch (e) { } }
+    return (t === 'light' || t === 'dark') ? '&theme=' + t : '';
+  }
   var panel = null;
   function openPanel() {
-    if (mobile) { window.top.location.href = link; return; }   // full screen on phones
+    if (mobile) { window.top.location.href = link + themeQ(); return; }   // full screen on phones
     if (!panel) {
       panel = document.createElement('div'); panel.className = 'vqa-panel';
-      var f = document.createElement('iframe'); f.src = link + '&embed=1'; f.allow = 'clipboard-write';
+      var f = document.createElement('iframe'); f.src = link + '&embed=1' + themeQ(); f.allow = 'clipboard-write';
       panel.appendChild(f); document.body.appendChild(panel);
       // if the chat cannot load inside the app (browser blocks sign-in in frames), open it in a new tab instead
       var loaded = false; f.onload = function () { loaded = true; };
